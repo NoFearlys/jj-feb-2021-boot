@@ -1,8 +1,6 @@
 package DAO;
 
 
-import com.lesson3.jjfeb2021.models.City;
-import com.lesson3.jjfeb2021.models.DAO.CityDao;
 import com.lesson3.jjfeb2021.models.DAO.ModelDao;
 import com.lesson3.jjfeb2021.models.Model;
 import org.junit.Before;
@@ -14,7 +12,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.persistence.EntityManager;
-import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = DaoTestConfig.class)

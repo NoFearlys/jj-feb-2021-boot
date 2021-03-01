@@ -2,7 +2,6 @@ package DAO;
 
 import com.lesson3.jjfeb2021.models.City;
 import com.lesson3.jjfeb2021.models.DAO.CityDao;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
