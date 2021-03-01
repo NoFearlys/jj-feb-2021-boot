@@ -27,6 +27,13 @@ public class ModelDao {
                 .getResultList();
     }
 
+    public List<Model> findByName(String name) {
+        return manager
+                .createQuery("from Model where Model.name= :name", Model.class)
+                .setParameter("name", name)
+                .getResultList();
+    }
+
     public void add(Model model){
         manager.persist(model);
     }

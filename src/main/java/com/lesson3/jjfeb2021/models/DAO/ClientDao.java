@@ -13,7 +13,8 @@ import java.util.List;
 public class ClientDao {
     private final EntityManager manager;
 
-    public ClientDao(@Autowired EntityManager manager) {
+    @Autowired
+    public ClientDao(EntityManager manager) {
         this.manager = manager;
     }
 

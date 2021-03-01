@@ -32,6 +32,7 @@ public class CityDaoTest {
     public void configure(){
         cityDao = new CityDao(manager);
         city = new City("SPb");
+
     }
 
 @Test

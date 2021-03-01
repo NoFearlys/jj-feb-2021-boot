@@ -12,7 +12,8 @@ import java.util.List;
 public class TaskDao {
     private final EntityManager manager;
 
-    public TaskDao(@Autowired EntityManager manager) {
+    @Autowired
+    public TaskDao( EntityManager manager) {
         this.manager = manager;
     }
 
