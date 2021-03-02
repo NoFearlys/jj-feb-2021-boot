@@ -17,12 +17,6 @@ public class BaseFiller {
 
     @Autowired
     private static ModelDao modelDao;
-    @Autowired
-    private static CityDao cityDao;
-    @Autowired
-    private static ClientDao clientDao;
-    @Autowired
-    private static TaskDao taskDao;
 
     public void fill(EntityManager manager) {
         manager.getTransaction().begin();

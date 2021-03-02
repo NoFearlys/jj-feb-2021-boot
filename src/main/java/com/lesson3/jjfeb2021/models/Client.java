@@ -10,14 +10,12 @@ public class Client {
     int clientId;
     @Column(name = "name")
     String name;
-    @Column(name = "city")
     @ManyToOne(cascade = CascadeType.ALL)
     City city;
     @Column(name = "adress")
     String address;
     @Column(name = "phone")
     long phone;
-    @Column(name = "name")
     @ManyToOne(cascade = CascadeType.ALL)
     Model model;
 
