@@ -1,4 +1,4 @@
-import DAO.DaoTestConfig;
+import com.lesson3.jjfeb2021.models.DAO.DaoTestConfig;
 import com.lesson3.jjfeb2021.models.City;
 import com.lesson3.jjfeb2021.models.Client;
 import com.lesson3.jjfeb2021.models.Model;

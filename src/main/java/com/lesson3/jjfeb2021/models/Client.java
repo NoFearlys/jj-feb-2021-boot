@@ -6,15 +6,22 @@ import javax.persistence.*;
 @Table(name = "clients")
 public class Client {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     int clientId;
+    @Column(name = "name")
     String name;
+    @Column(name = "city")
     @ManyToOne(cascade = CascadeType.ALL)
     City city;
+    @Column(name = "adress")
     String address;
+    @Column(name = "phone")
     long phone;
+    @Column(name = "name")
     @ManyToOne(cascade = CascadeType.ALL)
     Model model;
+
+
     public Client() {
 
     }

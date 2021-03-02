@@ -1,7 +1,6 @@
-package DAO;
+package com.lesson3.jjfeb2021.models.DAO;
 
-import com.lesson3.jjfeb2021.models.City;
-import com.lesson3.jjfeb2021.models.DAO.CityDao;
+import com.lesson3.jjfeb2021.models.Model;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,31 +17,37 @@ import static org.junit.Assert.*;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = DaoTestConfig.class)
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
-public class CityDaoTest {
+public class ClientDaoTest {
 
     @Autowired
     private EntityManager manager;
     @Autowired
-    private CityDao cityDao;
-
-    private City city;
+    private ClientDao clientDao;
 
     @Before
     public void configure(){
-        cityDao = new CityDao(manager);
-        city = new City("SPb");
+        BaseFiller baseFiller = new BaseFiller();
+        baseFiller.fill(manager);
 
     }
 
-@Test
-    public void testAdd() {
-        cityDao.add(city);
-        assertEquals("SPb", cityDao.findAll().get(0).getName());
+    @Test
+    public void findAllClients() {
     }
-@Test
-    public void testRemove() {
-        int cityId = city.getCityId();
-        cityDao.remove(city);
-        assertNull(manager.find(City.class, cityId));
+
+    @Test
+    public void findByCity() {
+    }
+
+    @Test
+    public void findByModel() {
+    }
+
+    @Test
+    public void add() {
+    }
+
+    @Test
+    public void remove() {
     }
 }

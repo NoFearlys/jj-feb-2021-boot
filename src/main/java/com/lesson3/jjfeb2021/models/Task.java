@@ -6,13 +6,14 @@ import javax.persistence.*;
 @Table(name = "tasks")
 public class Task {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     int taskId;
     @ManyToOne
     Client client;
     int quantity;
     long trackNumberIn;
     long trackNumberOut;
+    @Enumerated(EnumType.STRING)
     Status status;
 
     public Task(){

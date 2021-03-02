@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import java.util.List;
 
 @Repository
@@ -18,21 +19,38 @@ public class TaskDao {
     }
 
     public List<Task> findAllTasks() {
-        return manager.createQuery("from Task", Task.class).getResultList();
+        try{
+        return manager
+                .createQuery("from Task", Task.class)
+                .getResultList();
+        }
+        catch (NoResultException notFound){
+            return null;
+        }
     }
 
     public List<Task> findByStatus(int status) {
+        try{
         return manager
                 .createQuery("from Task where Task.status= :status", Task.class)
                 .setParameter("status", status)
                 .getResultList();
+        }
+        catch (NoResultException notFound){
+            return null;
+        }
     }
 
     public List<Task> findByClient(Client client) {
+        try{
         return manager
                 .createQuery("from Task where Task.client= :client", Task.class)
                 .setParameter("client", client)
                 .getResultList();
+        }
+        catch (NoResultException notFound){
+            return null;
+        }
     }
 
     public void add(Task task){manager.persist(task);}

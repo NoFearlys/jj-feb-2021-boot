@@ -1,4 +1,4 @@
-package DAO;
+package com.lesson3.jjfeb2021.models.DAO;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
