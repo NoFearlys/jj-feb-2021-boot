@@ -10,13 +10,15 @@ public class Client {
     int clientId;
     @Column(name = "name")
     String name;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "cityId")
     City city;
     @Column(name = "adress")
     String address;
     @Column(name = "phone")
     long phone;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "modelId")
     Model model;
 
 

@@ -9,6 +9,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.persistence.EntityManager;
+import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = DaoTestConfig.class)
@@ -63,6 +64,14 @@ public class BaseFiller {
         manager.persist(city1);
         manager.persist(city2);
         manager.persist(city3);
+
+        manager.getTransaction().commit();
+
+        List<Model> models = modelDao.findAllModels();
+        for (Model m : models){
+            System.out.println(m.getName());
+        }
+        manager.getTransaction().begin();
 
         manager.persist(client);
         manager.persist(client1);
