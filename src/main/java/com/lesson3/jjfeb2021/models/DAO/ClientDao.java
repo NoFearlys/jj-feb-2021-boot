@@ -30,11 +30,35 @@ public class ClientDao {
         }
     }
 
-    public List<Client> findByCity(City city) {
+    public List<Client> findByName(String name) {
+        try{
+            return manager
+                    .createQuery("from Client where name= :name", Client.class)
+                    .setParameter("name", name)
+                    .getResultList();
+        }
+        catch (NoResultException notFound){
+            return null;
+        }
+    }
+
+    public List<Client> findByCityName(String cityName) {
+        try{
+            return manager
+                    .createQuery("from Client c where c.city.name= :cityName", Client.class)
+                    .setParameter("cityName", cityName)
+                    .getResultList();
+        }
+        catch (NoResultException notFound){
+            return null;
+        }
+    }
+
+    public List<Client> findByModelName(String modelName) {
         try{
         return manager
-                .createQuery("from Client where Client.city= :city", Client.class)
-                .setParameter("city", city)
+                .createQuery("from Client c where c.model.name= :modelName", Client.class)
+                .setParameter("modelName", modelName)
                 .getResultList();
         }
         catch (NoResultException notFound){
@@ -42,19 +66,13 @@ public class ClientDao {
         }
     }
 
-    public List<Client> findByModel(Model model) {
-        try{
-        return manager
-                .createQuery("from Client where Client.model= :model", Client.class)
-                .setParameter("model", model)
-                .getResultList();
-        }
-        catch (NoResultException notFound){
-            return null;
-        }
+    public void add(Client client){
+        manager.getTransaction().begin();
+        manager.persist(client);
+        manager.getTransaction().commit();
     }
 
-    public void add(Client client){manager.persist(client);}
-
-    public void remove(Client client){manager.remove(client);}
+    public void remove(Client client){
+        manager.remove(client);
+    }
 }

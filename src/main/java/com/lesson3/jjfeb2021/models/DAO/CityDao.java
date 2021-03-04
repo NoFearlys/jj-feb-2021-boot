@@ -17,7 +17,18 @@ public class CityDao {
         this.manager = manager;
     }
 
-    public List<City> findAll() {return manager.createQuery("from City", City.class).getResultList();}
+    public List<City> findAll() {
+        return manager
+                .createQuery("from City", City.class)
+                .getResultList();
+    }
+
+    public List<City> findByName(String name){
+        return manager
+                .createQuery("from City where name = :name")
+                .setParameter("name", name)
+                .getResultList();
+    }
 
     public void add(City city){
         manager.getTransaction().begin();

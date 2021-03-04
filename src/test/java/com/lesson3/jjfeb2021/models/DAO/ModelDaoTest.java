@@ -72,7 +72,8 @@ public class ModelDaoTest {
 
     @Test
     public void remove(){
-        int modelId = model.getModelId();
+        modelDao.add(model);
+        int modelId = modelDao.findByName("Хонкон1").get(0).getModelId();
         modelDao.remove(model);
         assertNull(manager.find(Model.class, modelId));
     }

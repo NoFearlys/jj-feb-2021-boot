@@ -8,11 +8,12 @@ public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int taskId;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "clientId")
     Client client;
     int quantity;
-    long trackNumberIn;
-    long trackNumberOut;
+    String trackNumberIn;
+    String trackNumberOut;
     @Enumerated(EnumType.STRING)
     Status status;
 
@@ -20,7 +21,7 @@ public class Task {
 
     }
 
-    public Task(Client client, int quantity, long trackNumberIn, long trackNumberOut, Status status) {
+    public Task(Client client, int quantity, String trackNumberIn, String trackNumberOut, Status status) {
         this.client = client;
         this.quantity = quantity;
         this.trackNumberIn = trackNumberIn;
@@ -52,19 +53,19 @@ public class Task {
         this.quantity = quantity;
     }
 
-    public long getTrackNumberIn() {
+    public String getTrackNumberIn() {
         return trackNumberIn;
     }
 
-    public void setTrackNumberIn(long trackNumberIn) {
+    public void setTrackNumberIn(String trackNumberIn) {
         this.trackNumberIn = trackNumberIn;
     }
 
-    public long getTrackNumberOut() {
+    public String getTrackNumberOut() {
         return trackNumberOut;
     }
 
-    public void setTrackNumberOut(long trackNumberOut) {
+    public void setTrackNumberOut(String trackNumberOut) {
         this.trackNumberOut = trackNumberOut;
     }
 

@@ -1,6 +1,7 @@
 package com.lesson3.jjfeb2021.models.DAO;
 
 import com.lesson3.jjfeb2021.models.Client;
+import com.lesson3.jjfeb2021.models.Status;
 import com.lesson3.jjfeb2021.models.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -29,10 +30,10 @@ public class TaskDao {
         }
     }
 
-    public List<Task> findByStatus(int status) {
+    public List<Task> findByStatus(Status status) {
         try{
         return manager
-                .createQuery("from Task where Task.status= :status", Task.class)
+                .createQuery("from Task where status = :status", Task.class)
                 .setParameter("status", status)
                 .getResultList();
         }
@@ -41,20 +42,40 @@ public class TaskDao {
         }
     }
 
-    public List<Task> findByClient(Client client) {
+    public List<Task> findByClientPhone(String clientPhone) {
         try{
-        return manager
-                .createQuery("from Task where Task.client= :client", Task.class)
-                .setParameter("client", client)
-                .getResultList();
+            return manager
+                    .createQuery("from Task t where t.client.phone= :clientPhone", Task.class)
+                    .setParameter("clientPhone", clientPhone)
+                    .getResultList();
         }
         catch (NoResultException notFound){
             return null;
         }
     }
 
-    public void add(Task task){manager.persist(task);}
+    public List<Task> findByTrackNumber(String trackNumber) {
+        try{
+            return manager
+                    .createQuery("from Task where trackNumberIn= :trackNumber or trackNumberOut= :trackNumber", Task.class)
+                    .setParameter("trackNumber", trackNumber)
+                    .getResultList();
+        }
+        catch (NoResultException notFound){
+            return null;
+        }
+    }
 
-    public void remove(Task task){manager.remove(task);}
+    public void add(Task task){
+        manager.getTransaction().begin();
+        manager.persist(task);
+        manager.getTransaction().commit();
+    }
+
+    public void remove(Task task){
+        manager.getTransaction().begin();
+        manager.remove(task);
+        manager.getTransaction().commit();
+    }
 
 }

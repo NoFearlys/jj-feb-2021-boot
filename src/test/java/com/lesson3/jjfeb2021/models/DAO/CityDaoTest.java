@@ -39,7 +39,8 @@ public class CityDaoTest {
     }
 @Test
     public void testRemove() {
-        int cityId = city.getCityId();
+        cityDao.add(city);
+        int cityId = cityDao.findByName("SPb").get(0).getCityId();
         cityDao.remove(city);
         assertNull(manager.find(City.class, cityId));
     }

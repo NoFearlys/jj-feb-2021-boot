@@ -16,7 +16,7 @@ public class Client {
     @Column(name = "adress")
     String address;
     @Column(name = "phone")
-    long phone;
+    String phone;
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "modelId")
     Model model;
@@ -26,7 +26,7 @@ public class Client {
 
     }
 
-    public Client(String name, City city, String address, long phone, Model model) {
+    public Client(String name, City city, String address, String phone, Model model) {
         this.name = name;
         this.city = city;
         this.address = address;
@@ -66,11 +66,11 @@ public class Client {
         this.address = address;
     }
 
-    public long getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(long phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 

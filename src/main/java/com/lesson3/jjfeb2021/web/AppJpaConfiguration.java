@@ -7,17 +7,14 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-public class AppJpaConfiguration {
     @Configuration
-    public class AppJPAConfiguration {
+    public class AppJpaConfiguration {
         @Bean
         public EntityManager entityManager(EntityManagerFactory factory) {
             return factory.createEntityManager();
         }
-
         @Bean
         public EntityManagerFactory entityManagerFactory() {
             return Persistence.createEntityManagerFactory("AppPersistenceUnit");
         }
     }
-}

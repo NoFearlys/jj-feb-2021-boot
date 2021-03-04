@@ -34,23 +34,23 @@ public class BaseFiller {
         City city2 = new City("Омск");
         City city3 = new City("Киев");
 
-        Client client = new Client("Александр", city1, "Первый адрес", 9443824, model2);
-        Client client1 = new Client("Маргарита", city2, "Второй адрес", 4654865, model3);
-        Client client2 = new Client("Полина", city3, "Третий адрес", 3153846, model4);
-        Client client3 = new Client("Сергей", city2, "Четвёртый адрес", 6466423, model2);
-        Client client4 = new Client("Полина", city2, "Пятый адрес", 6543132, model1);
-        Client client5 = new Client("Василий", city1, "Шестой адрес", 1568513, model5);
+        Client client = new Client("Александр", city1, "Первый адрес", "9443824", model2);
+        Client client1 = new Client("Маргарита", city2, "Второй адрес", "4654865", model);
+        Client client2 = new Client("Полина", city3, "Третий адрес", "3153846", model4);
+        Client client3 = new Client("Сергей", city, "Четвёртый адрес", "6466423", model);
+        Client client4 = new Client("Полина", city2, "Пятый адрес", "6543132", model1);
+        Client client5 = new Client("Василий", city1, "Шестой адрес", "1568513", model5);
 
-        Task task = new Task(client, 3, 1354646345, 1356666662, Status.SENT);
-        Task task1 = new Task(client1, 1, 1352323423, 1353543432, Status.WAITING);
-        Task task2 = new Task(client3, 5, 1323423345, 1345435332, Status.WAITING);
-        Task task3 = new Task(client5, 1, 1323426345, 1354335432, Status.OPERATION);
-        Task task4 = new Task(client2, 1, 1323444245, 1335435432, Status.RECEIVED);
-        Task task5 = new Task(client4, 3, 1357565345, 1343354352, Status.PAID);
-        Task task6 = new Task(client1, 2, 1375566745, 1435433352, Status.SENT);
-        Task task7 = new Task(client4, 7, 1675675665, 1353433542, Status.WAITING);
-        Task task8 = new Task(client2, 1, 1357675677, 1354543332, Status.RECEIVED);
-        Task task9 = new Task(client, 6, 1354567557, 1354354332, Status.SENT);
+        Task task = new Task(client, 3, "1354646345", "1356666662", Status.SENT);
+        Task task1 = new Task(client1, 1, "1352323423", "1353543432", Status.WAITING);
+        Task task2 = new Task(client3, 5, "1323423345", "1345435332", Status.WAITING);
+        Task task3 = new Task(client5, 1, "1323426345", "1354335432", Status.OPERATION);
+        Task task4 = new Task(client2, 1, "1323444245", "1335435432", Status.RECEIVED);
+        Task task5 = new Task(client4, 3, "1353433542", "1343354352", Status.PAID);
+        Task task6 = new Task(client1, 2, "1375566745", "1435433352", Status.SENT);
+        Task task7 = new Task(client4, 7, "1675675665", "1353433542", Status.WAITING);
+        Task task8 = new Task(client2, 1, "1357675677", "1354543332", Status.RECEIVED);
+        Task task9 = new Task(client, 6, "1354567557", "1354354332", Status.SENT);
 
 
         manager.persist(model);
@@ -65,21 +65,13 @@ public class BaseFiller {
         manager.persist(city2);
         manager.persist(city3);
 
-        manager.getTransaction().commit();
-
-        List<Model> models = modelDao.findAllModels();
-        for (Model m : models){
-            System.out.println(m.getName());
-        }
-        manager.getTransaction().begin();
-
         manager.persist(client);
         manager.persist(client1);
         manager.persist(client2);
         manager.persist(client3);
         manager.persist(client4);
         manager.persist(client5);
-/*
+
         manager.persist(task);
         manager.persist(task1);
         manager.persist(task2);
@@ -90,7 +82,7 @@ public class BaseFiller {
         manager.persist(task7);
         manager.persist(task8);
         manager.persist(task9);
-*/
+
         manager.getTransaction().commit();
 
         System.out.println("done");

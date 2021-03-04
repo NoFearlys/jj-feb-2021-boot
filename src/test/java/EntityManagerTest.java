@@ -33,7 +33,7 @@ public class EntityManagerTest {
             manager.getTransaction().begin();
             City city = new City("Санкт-Петербург");
             Model model = new Model("Альтера", "2.0.Н", 3500, "0F 24", "27 10");
-            Client client = new Client("Александр", city, "СПБ, Есенина, 26", 9443824, model);
+            Client client = new Client("Александр", city, "СПБ, Есенина, 26", "9443824", model);
             manager.persist(client);
             manager.getTransaction().commit();
         } finally {
