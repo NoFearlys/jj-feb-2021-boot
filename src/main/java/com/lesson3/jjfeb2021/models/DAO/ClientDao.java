@@ -66,6 +66,10 @@ public class ClientDao {
         }
     }
 
+    public Client findById(int id){
+       return manager.find(Client.class, id);
+    }
+
     public void add(Client client){
         manager.getTransaction().begin();
         manager.persist(client);

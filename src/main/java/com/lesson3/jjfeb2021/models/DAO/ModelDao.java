@@ -1,5 +1,6 @@
 package com.lesson3.jjfeb2021.models.DAO;
 
+import com.lesson3.jjfeb2021.models.Client;
 import com.lesson3.jjfeb2021.models.Model;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -50,6 +51,9 @@ public class ModelDao {
         catch (NoResultException notFound){
             return null;
         }
+    }
+    public Model findById(int id){
+        return manager.find(Model.class, id);
     }
 
     public void add(Model model){
