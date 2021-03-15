@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Controller
@@ -29,7 +30,7 @@ public class MainPage {
 
     @GetMapping("/")
     public String index(Model model){
-        List<Task> tasks = taskDao.findAllTasks();
+        List<Task> tasks = taskDao.findAll();
         model.addAttribute("tasks", tasks);
         return "index";
     }
@@ -37,14 +38,14 @@ public class MainPage {
 
     @GetMapping("/client{id}")
     public String client(Model model, int id){
-        Client client = clientDao.findById(id);
+        Client client = clientDao.getOne(id);
         model.addAttribute("client", client);
         return "client";
     }
 
     @GetMapping("/model{id}")
     public String model(Model model, int id){
-        com.lesson3.jjfeb2021.models.Model apparatModel = modelDao.findById(id);
+        com.lesson3.jjfeb2021.models.Model apparatModel = modelDao.getOne(id);
         model.addAttribute("apparatModel", apparatModel);
         return "model";
     }

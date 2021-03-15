@@ -44,7 +44,7 @@ public class TaskDaoTest {
 
     @Test
     public void findAllTasks() {
-        assertEquals(10, taskDao.findAllTasks().size());
+        assertEquals(10, taskDao.findAll().size());
     }
 
     @Test
@@ -72,21 +72,8 @@ public class TaskDaoTest {
         List<Task> results= taskDao.findByTrackNumber("1353433542");
 
         for(Task t : results) {
-            assertTrue(t.getTrackNumberIn() == "1353433542" || t.getTrackNumberOut() == "1353433542");
+            assertTrue(t.getTrackNumber() == "1353433542");
         }
         assertEquals(2, results.size());
-    }
-
-    @Test
-    public void testAdd() {
-        taskDao.add(task);
-        assertEquals("9999999999", taskDao.findByTrackNumber("9999999999").get(0).getTrackNumberOut());
-    }
-    @Test
-    public void testRemove() {
-        taskDao.add(task);
-        int taskId = taskDao.findByTrackNumber("9999999999").get(0).getTaskId();
-        taskDao.remove(task);
-        assertNull(manager.find(Task.class, taskId));
     }
 }

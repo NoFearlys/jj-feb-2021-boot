@@ -12,7 +12,7 @@ public class Task {
     @JoinColumn(name = "clientId")
     Client client;
     int quantity;
-    String trackNumberIn;
+    String trackNumber;
     String trackNumberOut;
     @Enumerated(EnumType.STRING)
     Status status;
@@ -21,10 +21,10 @@ public class Task {
 
     }
 
-    public Task(Client client, int quantity, String trackNumberIn, String trackNumberOut, Status status) {
+    public Task(Client client, int quantity, String trackNumber, String trackNumberOut, Status status) {
         this.client = client;
         this.quantity = quantity;
-        this.trackNumberIn = trackNumberIn;
+        this.trackNumber = trackNumber;
         this.trackNumberOut = trackNumberOut;
         this.status = status;
     }
@@ -53,12 +53,12 @@ public class Task {
         this.quantity = quantity;
     }
 
-    public String getTrackNumberIn() {
-        return trackNumberIn;
+    public String getTrackNumber() {
+        return trackNumber;
     }
 
-    public void setTrackNumberIn(String trackNumberIn) {
-        this.trackNumberIn = trackNumberIn;
+    public void setTrackNumber(String trackNumber) {
+        this.trackNumber = trackNumber;
     }
 
     public String getTrackNumberOut() {

@@ -41,7 +41,7 @@ public class ModelDaoTest {
 
     @Test
     public void findAllModels() {
-        assertEquals(6, modelDao.findAllModels().size());
+        assertEquals(6, modelDao.findAll().size());
     }
 
     @Test
@@ -62,19 +62,5 @@ public class ModelDaoTest {
             assertEquals("Стандартный", m.getName());
         }
         assertEquals(2, results.size());
-    }
-
-    @Test
-    public void add(){
-        modelDao.add(model);
-        assertEquals("Хонкон1", modelDao.findByName("Хонкон1").get(0).getName());
-    }
-
-    @Test
-    public void remove(){
-        modelDao.add(model);
-        int modelId = modelDao.findByName("Хонкон1").get(0).getModelId();
-        modelDao.remove(model);
-        assertNull(manager.find(Model.class, modelId));
     }
 }

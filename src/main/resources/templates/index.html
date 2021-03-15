@@ -48,7 +48,7 @@
                     <a th:href="@{client(id=${task.getClient().getClientId()})}" th:text = "${task.getClient().getName()}" target="_self"></a>
                 </td>
                 <td th:text = "${task.getQuantity()}"></td>
-                <td th:text = "${task.getTrackNumberIn()}"></td>
+                <td th:text = "${task.getTrackNumber()}"></td>
                 <td th:text = "${task.getTrackNumberOut()}"}></td>
                 <td th:text = "${task.getStatus()}"></td>
             </tr>

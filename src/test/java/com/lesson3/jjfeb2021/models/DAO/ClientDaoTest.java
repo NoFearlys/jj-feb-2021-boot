@@ -40,7 +40,7 @@ public class ClientDaoTest {
 
     @Test
     public void findAllClients() {
-        assertEquals(6, clientDao.findAllClients().size());
+        assertEquals(6, clientDao.findAll().size());
     }
 
     @Test
@@ -73,17 +73,5 @@ public class ClientDaoTest {
         assertEquals(3, results.size());
     }
 
-    @Test
-    public void add() {
-        clientDao.add(client);
-        assertEquals("Семён", clientDao.findByName("Семён").get(0).getName());
-    }
 
-    @Test
-    public void remove() {
-        clientDao.add(client);
-        int clientId = clientDao.findByName("Семён").get(0).getClientId();
-        clientDao.remove(client);
-        assertNull(manager.find(Client.class, clientId));
-    }
 }
