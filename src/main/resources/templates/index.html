@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <title>Главная страница</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet"th:href="@{/css/modalStyle.css}">
+
+</head>
+<body>
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Tenth navbar example">
         <div class="container-fluid">
@@ -31,6 +35,17 @@
             </div>
         </div>
     </nav>
+    <style>
+        table {
+            width: 100%; /* Ширина таблицы */
+        }
+        td {
+            padding: 5px; /* Поля в ячейках */
+        }
+        td:first-child {
+            cursor: pointer; /* Вид курсора */
+        }
+    </style>
     <div class="table-responsive">
         <table class="table table-striped table-sm">
             <thead>
@@ -44,8 +59,10 @@
             </thead>
             <tbody>
             <tr th:each = "task : ${tasks}">
-                <td>
-                    <a th:href="@{client(id=${task.getClient().getClientId()})}" th:text = "${task.getClient().getName()}" target="_self"></a>
+                <td th:class="client"
+                    th:text = "${task.getClient().getName()}"
+                    th:id="${task.getClient().getClientId()}"
+                    onclick="showClient(this.id)">
                 </td>
                 <td th:text = "${task.getQuantity()}"></td>
                 <td th:text = "${task.getTrackNumber()}"></td>
@@ -55,8 +72,20 @@
             </tbody>
         </table>
     </div>
+    <div class="modal-overlay" id="clientModal">
+        <div class="modal">
 
-</head>
-<body> <!-- Основная часть документа -->
+            <div class="modal-content">
+                <h3 id="content">Some content here</h3>
+            </div><!-- content -->
+
+        </div><!-- modal -->
+    </div><!-- overlay -->
+    <button id="btnModal">Click For Modal</button>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js'></script>
+    <script th:src="@{/js/index.js}"></script>
+
+
+ <!-- Основная часть документа -->
 </body>
 </html>
