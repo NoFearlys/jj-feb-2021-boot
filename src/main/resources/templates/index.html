@@ -95,11 +95,11 @@
                         </thead>
                         <tbody>
                         <tr>
-                            <td class="modalClient" th:name="clientName"></td>
-                            <td class="modalClient" th:name="clientCity"></td>
-                            <td class="modalClient" th:name="adres"></td>
-                            <td class="modalClient" th:name="phone"></td>
-                            <td class="modalClient" th:name="model"></td>
+                            <td class="Client" th:name="clientName"></td>
+                            <td class="Client" th:name="clientCity"></td>
+                            <td class="Client" th:name="adres"></td>
+                            <td class="Client" th:name="phone"></td>
+                            <td class="Client" th:name="model"></td>
                         </tr>
                         </tbody>
                     </table>
@@ -107,7 +107,25 @@
             </div><!-- content -->
 
         </div><!-- modal -->
+    </div>
+
+    <div class="modal-overlay1" id="addFormModal">
+        <div class="modal1">
+            <div class="modal-content1">
+                <form action="/action_page.php">
+                    <label for="fname">First name:</label><br>
+                    <input type="text" id="fname" name="fname" value="John"><br>
+                    <label for="lname">Last name:</label><br>
+                    <input type="text" id="lname" name="lname" value="Doe"><br><br>
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+        </div>
     </div><!-- overlay -->
+
+    <button class="modalAddForm" onclick="addForm()">
+        Добавить задачу
+    </button>
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js'></script>
     <script th:src="@{/js/index.js}"></script>
 

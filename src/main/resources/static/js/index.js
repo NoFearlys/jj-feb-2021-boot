@@ -1,17 +1,22 @@
-var elements = $('.modal-overlay, .modal');
-var modalClientFields = document.getElementsByClassName('modalClient')
+var clientModalElements = $('.modal-overlay, .modal');
+var addFormModal = $('.modal-overlay1, .modal1');
+var modalClientFields = document.getElementsByClassName('Client')
 var modal = document.getElementById('clientModal')
+var modal1 = document.getElementById('addFormModal')
 var content = document.getElementById('content')
 
 
 
 window.onclick = function (event){
     if(event.target == modal){
-        elements.removeClass('active');
+        clientModalElements.removeClass('active');
+    }
+    else if(event.target == modal1){
+        addFormModal.removeClass('active');
     }
 }
 function showClient(id) {
-    elements.addClass('active');
+    clientModalElements.addClass('active');
     var request = new XMLHttpRequest();
     request.onreadystatechange = function (){
         if (request.readyState == 4){
@@ -25,4 +30,8 @@ function showClient(id) {
     }
     request.open("get", "/client/"+id, true);
     request.send();
+}
+
+function addForm(){
+    addFormModal.addClass('active');
 }

@@ -4,3 +4,13 @@ jdk:
   - oraclejdk11
 before_install:
   - chmod +x mvnw
+
+addons:
+  sonarcloud:
+    organization: "nofearlys"
+    token:
+      secure: "8f348427624e88ea74d828dbf5504d6d097e11a5" # encrypted value of your token
+
+script:
+  # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
+  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=NoFearlys_jj-feb-2021-boot
