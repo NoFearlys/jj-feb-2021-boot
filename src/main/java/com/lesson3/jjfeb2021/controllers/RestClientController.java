@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.NoSuchElementException;
+
 @RestController
 @RequestMapping("/client/")
 public class RestClientController {
@@ -17,6 +19,11 @@ public class RestClientController {
 
     @GetMapping(value = "/{id}", produces = "application/json")
     public Client getClient (@PathVariable int id){
-        return clientDao.findById(id).get();
+        try{
+            return clientDao.findById(id).get();
+        }
+        catch (NoSuchElementException e){
+            return null;
+        }
     }
 }

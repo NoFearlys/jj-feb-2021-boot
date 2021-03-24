@@ -12,18 +12,18 @@ public class Model {
     String version;
     int price;
     String dataRegister;
-    String data_content;
+    String dataContent;
 
     public Model(){
 
     }
 
-    public Model(String name, String version, int price, String dataRegister, String data_content) {
+    public Model(String name, String version, int price, String dataRegister, String dataContent) {
         this.name = name;
         this.version = version;
         this.price = price;
         this.dataRegister = dataRegister;
-        this.data_content = data_content;
+        this.dataContent = dataContent;
     }
 
     public int getModelId() {
@@ -66,11 +66,11 @@ public class Model {
         this.dataRegister = dataRegister;
     }
 
-    public String getData_content() {
-        return data_content;
+    public String getDataContent() {
+        return dataContent;
     }
 
-    public void setData_content(String data_content) {
-        this.data_content = data_content;
+    public void setDataContent(String dataContent) {
+        this.dataContent = dataContent;
     }
 }

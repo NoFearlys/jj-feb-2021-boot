@@ -1,16 +1,10 @@
 package com.lesson3.jjfeb2021.models.DAO;
 
 import com.lesson3.jjfeb2021.models.Client;
-import com.lesson3.jjfeb2021.models.Model;
-import com.lesson3.jjfeb2021.models.City;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
-
-import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
 import java.util.List;
 
 @Repository
